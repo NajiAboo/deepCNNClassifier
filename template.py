@@ -34,9 +34,9 @@ for filepath in list_of_files:
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"creating directoy: {filedir} for file {filename}")
 
-        if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
-            with open(filepath, "w") as f:
-                pass
-                logging.info(f"creating directory : {filedir}")
-        else:
-            logging.info("file already exist : {filename}")
+    if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
+        with open(filepath, "w") as f:
+            pass
+            logging.info(f"creating directory : {filedir}")
+    else:
+        logging.info("file already exist : {filename}")
