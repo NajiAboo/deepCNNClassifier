@@ -1,14 +1,14 @@
 from deepClassifier.entity import DataIngestionConfig
-from deepClassifier.utils import get_size
 from deepClassifier import logger
 from tqdm import tqdm
 import os
 
-from requests import request
+import urllib.request as request
 from zipfile import ZipFile
 
+
 class DataIngestion:
-    def __init__(self, config:DataIngestionConfig) -> None:
+    def __init__(self, config: DataIngestionConfig) -> None:
         self.config = config
 
     def download_file(self):
@@ -17,7 +17,7 @@ class DataIngestion:
 
         if not os.path.exists(file_name):
             logger.info("Download started")
-            result_file_name, header = request.urlretrieve(url= self.config.source_URL,filename=file_name)
+            result_file_name, header= request.urlretrieve(url= self.config.source_URL ,filename=file_name)
             logger.info(f"{file_name} download with following info \n {header}")
         else:
             logger.info(f"{file_name} already exist ")
